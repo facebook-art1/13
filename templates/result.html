@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Result</title>
+    <style>
+        /* Style for images */
+        img {
+            width: 200px; /* Set the width of the images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Add round edges */
+            margin-bottom: 10px; /* Add some space between images */
+        }
+    </style>
+</head>
+<body>
+    <h1>Diagnosis Result</h1>
+    <p><strong>Diagnosis:</strong> {{ diagnosis }}</p>
+    {% if diagnosis == "Likely scabies." %}
+    <p><strong>Symptoms:</strong></p>
+    <ul>
+        {% for symptom in symptoms %}
+        <li>{{ symptom }}</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Images:</strong></p>
+    <ul>
+        {% for symptom in symptoms %}
+        <li><img src="{{ image_urls[symptom] }}" alt="{{ symptom }}"></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <a href="/">Diagnose Again</a>
+</body>
+</html>
